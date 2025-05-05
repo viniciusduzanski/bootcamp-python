@@ -57,3 +57,37 @@ print(nome_aluno.strip())
 # Dividir a string com um delimitador, vai criar uma lista com o resultado
 nome_delimitador = "viniciusduzanski@gmail.com"
 print(nome_delimitador.split("@"))
+
+
+# Exemplo com TypeError
+
+try:
+    resultado = len(3) # Exception porque len é um método para strings
+    print(resultado)
+except TypeError as e:
+    print(e)
+else:
+    print("Tudo ocorreu bem")
+finally:
+    print("O finally sempre será executado")
+
+
+# isistance
+
+numero = int(input("Insira um número: "))
+if isinstance(numero, int): # Verifica se minha variável numero é do tipo int
+    print("A variável é um inteiro")
+else:
+    print("A variável não é um inteiro")
+
+# if, else, elif
+
+IDADE_MINIMA_PARA_DIRIGIR = 18
+IDADE_PARA_TIRAR_CARTEIRA = 18
+
+if IDADE_MINIMA_PARA_DIRIGIR < 18:
+    print("Não pode dirigir")
+elif IDADE_PARA_TIRAR_CARTEIRA == 18:
+    print("Pode tirar a carteira esse ano")
+else:
+    print("Pode dirigir")

@@ -7,9 +7,15 @@ import math
 # 3. Desenvolva um programa que multiplique dois números fornecidos pelo usuário e mostre o resultado.
 # 4. Faça um programa que peça dois números inteiros e imprima a divisão inteira do primeiro pelo segundo.
 
-numero_01 = int(input("Inserir um numero inteiro: "))
-numero_02 = int(input("Inserir outro numero inteiro: "))
-resultado = numero_01 // numero_02
+try:
+    numero_01 = int(input("Inserir um numero inteiro: "))
+    numero_02 = int(input("Inserir outro numero inteiro: "))
+    resultado = numero_01 // numero_02
+except ZeroDivisionError:
+    print("Integer division or modulo by zero")
+except KeyboardInterrupt:
+    print("Você interrompeu")
+
 print(resultado)
 
 # 5. Escreva um programa que calcule o quadrado de um número fornecido pelo usuário.
