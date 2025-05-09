@@ -1,3 +1,5 @@
+from time import sleep
+
 ### Exercício 1: Verificação de Qualidade de Dados
 # Você está analisando um conjunto de dados de vendas e precisa garantir 
 # que todos os registros tenham valores positivos para `quantidade` e `preço`. 
@@ -98,28 +100,117 @@ print(contagem_palavras)
 ### Exercício 7. Normalização de Dados
 # Objetivo:** Normalizar uma lista de números para que fiquem na escala de 0 a 1.
 
+numeros = [10, 20, 30, 40, 50]
+minimo = min(numeros)
+maximo = max(numeros)
+normalizados = [(x - minimo) / (maximo - minimo) for x in numeros] # list comprehension, cria uma lista a partir de outra
+
+print(normalizados)
+
 ### Exercício 8. Filtragem de Dados Faltantes
 # Objetivo:** Dada uma lista de dicionários representando dados de usuários, filtrar aqueles que têm um campo específico faltando
+
+usuarios = [
+    {"nome": "Alice", "email": "alice@example.com"},
+    {"nome": "Bob", "email": ""},
+    {"nome": "Carol", "email": "carol@example.com"}
+]
+
+usuarios_validos = [usuario for usuario in usuarios if usuario["email"]]
+print(usuarios_validos)
+
+usuarios_invalidos = [usuario for usuario in usuarios if not usuario["email"]]
+print(usuarios_invalidos)
 
 ### Exercício 9. Extração de Subconjuntos de Dados
 # Objetivo:** Dada uma lista de números, extrair apenas aqueles que são pares.
 
+numeros = [2, 56, 23, 17, 20, 42, 77, 5, 11, 26]
+
+numeros_pares = [x for x in numeros if (x % 2) == 0]
+print(numeros_pares)
+
 ### Exercício 10. Agregação de Dados por Categoria
 # Objetivo:** Dado um conjunto de registros de vendas, calcular o total de vendas por categoria.
+
+vendas = [
+    {"categoria": "eletrônicos", "valor": 1200},
+    {"categoria": "livros", "valor": 200},
+    {"categoria": "eletrônicos", "valor": 800}
+]
+
+total_por_categoria = {}
+
+for venda in vendas:
+    categoria = venda["categoria"]
+    valor = venda["valor"]
+
+    if categoria in total_por_categoria:
+        total_por_categoria[categoria] += valor
+    else:
+        total_por_categoria[categoria] = valor
+
+print(total_por_categoria)
 
 ### Exercícios com WHILE
 
 ### Exercício 11. Leitura de Dados até Flag
 # Ler dados de entrada até que uma palavra-chave específica ("sair") seja fornecida.
 
+""" while True:
+    entrada = input("Digite qualquer palavra ou digite sair para encerrar: ")
+    if entrada.lower() == "sair":
+        exit() """
+
 ### Exercício 12. Validação de Entrada
 # Solicitar ao usuário um número dentro de um intervalo específico até que a entrada seja válida.
+
+""" while True:
+    numero = (int(input("Digite um número entre 1 e 15: ")))
+    if numero in range(1, 16):
+        print(f"Você digitou o número {numero}")
+        exit() """
+
 
 ### Exercício 13. Consumo de API Simulado
 # Simular o consumo de uma API paginada, onde cada "página" de dados é processada em loop até que não haja mais páginas.
 
+pagina_atual = 1
+paginas_totais = 5  # Simulação, na prática, isso viria da API
+
+while pagina_atual <= paginas_totais:
+    print(f"Processando página {pagina_atual} de {paginas_totais}")
+    pagina_atual += 1
+
+print("Todas as páginas foram processadas.")
+
 ### Exercício 14. Tentativas de Conexão
 # Simular tentativas de reconexão a um serviço com um limite máximo de tentativas.
 
+MAXIMO_TENTATIVAS = 5
+
+tentativas_conexao = 0
+
+while tentativas_conexao < MAXIMO_TENTATIVAS:
+    print(f"Tentando conexão número {tentativas_conexao}...")
+    if False:
+        print("Conexão bem sucedida!")
+        break
+    tentativas_conexao += 1
+    sleep(2)
+else:
+    print(f"Falha ao conectar após {tentativas_conexao} tentativas")
+
 ### Exercício 15. Processamento de Dados com Condição de Parada
 # Processar itens de uma lista até encontrar um valor específico que indica a parada.
+
+itens = [1, 2, 3, "parar", 4, 5]
+
+i = 0
+while i < len(itens):
+    if itens[i] == "parar":
+        print("Parada encontrada, encerrando o processamento.")
+        break
+    # Processa o item
+    print(f"Processando item: {itens[i]}")
+    i += 1
